@@ -1,0 +1,210 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+.header {
+    background-color:  #22313f;
+    padding: 10px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header .logo {
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+.header .logo img {
+    width: 300px;
+    height: 110px;
+    margin-right: 10px;
+}
+.header a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+header .logo {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.steps div {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.steps div:not(:last-child)::after {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: #ddd;
+    margin: 0 20px;
+}
+
+.steps span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #ddd;
+    color: #555;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.steps .active span {
+    background: #6a1b9a;
+    color: white;
+}
+
+.restaurant-header {
+    display: flex;
+    align-items: center;
+    background: url('images/chicken_display_all.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+.restaurant-header .details {
+    margin-left: 100px; 
+    height: 200px;
+}
+
+.restaurant-header h1 {
+    margin: 0;
+}
+
+.restaurant-header p {
+    margin: 5px 0 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    flex: 1;
+    margin: 0 10px;
+}
+
+.cart {
+    flex: 0 0 300px; /* Fixed width for cart */
+    border: 1px solid #ddd;
+}
+
+.cart h2 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-total {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cart-checkout {
+    text-align: center;
+}
+
+.cart-checkout button {
+    background-color: #ff5a5f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu h2 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-item img {
+    width: 100px;
+    border-radius: 8px;
+}
+
+.menu-item div {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.menu-item-action {
+    display: flex;
+    align-items: center;
+}
+
+.menu-item-action input {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.menu-item-action button {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}

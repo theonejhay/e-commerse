@@ -1,0 +1,530 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(26,32,48,255);
+    padding: 10px 20px;
+    color: white;
+}
+.header .logo {
+    display: flex;
+    align-items: center;
+}
+.header .logo img {
+    width: 200px;
+    height: 70px;
+    margin-right: 10px;
+}
+.header .logo h1 {
+    margin: 0;
+    font-size: 10px;
+}
+.header .nav {
+    display: flex;
+    gap: 15px;
+}
+.header .nav span{
+    font-size: 14px;
+    white-space: nowrap;
+}
+.header .nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+.header .nav a:hover {
+    text-decoration: underline;
+}
+.main {
+    display: flex;
+    flex: 1;
+}
+.sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    height: calc(100vh - 70px);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+.sidebar h2 {
+    color: #007bff;
+}
+.sidebar a {
+    text-decoration: none;
+    display: block;
+    color: #333;
+    padding: 10px 0;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+}
+.sidebar a:hover {
+    background-color: #e9ecef;
+}
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+.dashboard-header {
+    background-color: rgba(26,32,48,255);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.dashboard-orders {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.dashboard-orders table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.dashboard-orders table th, .dashboard-orders table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.dashboard-orders table th {
+    background-color: #f2f2f2;
+}
+.delete-icon {
+    cursor: pointer;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+    background-color: #ddd;
+}
+
+.pagination button.active {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+position: relative; 
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 30%;
+text-align: center;
+border-radius: 10px;
+}
+
+.close {
+position: absolute; 
+top: 10px; 
+right: 10px; 
+font-size: 24px; 
+font-weight: bold;
+color: #000; 
+cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+.modal-content button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* Modal Styling */
+#confirmationStatusModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+#confirmationStatusModal .modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Centered on large screens */
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%; /* Mobile-friendly width */
+    max-width: 500px; /* Limit width on larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+#confirmationStatusModal .close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #confirmationStatusModal .modal-content {
+        width: 60%; /* Make it more responsive on smaller screens */
+        margin: 20% auto; /* Adjust top margin */
+    }
+
+    #confirmationStatusModal h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    #confirmationStatusModal select,
+    #confirmationStatusModal button {
+        width: 80%;
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    #confirmationStatusModal .modal-content {
+        width: 80%; /* Slightly reduce width for tablets */
+    }
+}
+
+
+/* Modal Styling */
+#deleteConfirmationModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+#deleteConfirmationModal .modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Centered on large screens */
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%; /* Mobile-friendly width */
+    max-width: 500px; /* Limit width on larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+#deleteConfirmationModal .close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #deleteConfirmationModal .modal-content {
+        width: 60%; /* Make it more responsive on smaller screens */
+        margin: 20% auto; /* Adjust top margin */
+    }
+
+    #deleteConfirmationModal h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    #deleteConfirmationModal select,
+    #deleteConfirmationModal button {
+        width: 80%;
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    #confirmationStatusModal .modal-content {
+        width: 80%; /* Slightly reduce width for tablets */
+    }
+}
+
+/* Modal Styling */
+#deleteAllModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+#deleteAllModal .modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Centered on large screens */
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%; /* Mobile-friendly width */
+    max-width: 500px; /* Limit width on larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+#deleteAllModal .close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #deleteAllModal .modal-content {
+        width: 70%; /* Make it more responsive on smaller screens */
+        margin: 20% auto; /* Adjust top margin */
+    }
+
+    #deleteAllModal h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    #deleteAllModal select,
+    #deleteAllModal button {
+        width: 80%;
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    #deleteAllModal .modal-content {
+        width: 80%; /* Slightly reduce width for tablets */
+    }
+}
+
+/* Modal Styling */
+#logoutModal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+#logoutModal .modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Centered on large screens */
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%; /* Mobile-friendly width */
+    max-width: 500px; /* Limit width on larger screens */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+#logoutModal .close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #logoutModal .modal-content {
+        width: 60%; /* Make it more responsive on smaller screens */
+        margin: 20% auto; /* Adjust top margin */
+    }
+
+    #logoutModal h2 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    #logoutModal select,
+    #logoutModal button {
+        width: 80%;
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    #logoutModal .modal-content {
+        width: 80%; /* Slightly reduce width for tablets */
+    }
+}
+
+/* Default styles are for larger screens */
+
+/* For medium screens (tablets, small desktops) */
+@media (max-width: 1024px) {
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For small screens (large smartphones, small tablets) */
+@media (max-width: 768px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .sidebar {
+        width: 200px; /* Reduce sidebar width */
+        padding: 10px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .header .logo img {
+        width: 150px; /* Reduce logo size */
+        height: 50px;
+    }
+
+    .header .nav a {
+        font-size: 16px; /* Adjust nav font size */
+    }
+}
+
+
+/* For extra small screens (smartphones) */
+/* For extra small screens (smartphones) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        height: auto; /* Adjust height */
+        position: relative; /* Allow stacking */
+    }
+
+    .main {
+        flex-direction: column; /* Stack content vertically */
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    
+    }
+    .nav {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px; /* Space between items */
+    }
+    
+    .nav-label {
+        margin-right: 10px; /* Space between label and value */
+    }
+   
+
+    .dashboard-cards {
+        gap: 10px; /* Reduce gap between cards */
+    }
+
+    .card {
+        width: 100%; /* Full-width cards */
+        padding: 15px;
+    }
+
+    .header .logo img {
+        width: 120px; /* Further reduce logo size */
+        height: 40px;
+    }
+
+    .header .nav a {
+        font-size: 14px; /* Smaller nav font */
+    }
+
+
+    .table-container {
+        overflow-x: auto; /* Allow horizontal scrolling */
+        overflow-y: auto; /* Allow vertical scrolling */
+        margin-top: 20px 0;
+    }
+
+    .table-container table {
+        width: 100%;
+        min-width: 800px;
+        border-collapse: collapse;
+    }
+
+    .table-container th, .table-container td {
+        padding: 10px; /* Add padding for better spacing */
+        text-align: left; /* Align text to the left */
+        border: 1px solid #ddd; /* Optional: Add borders to cells */
+    }
+
+    .table-container th {
+        background-color: #f4f4f4; /* Optional: Light background for header */
+        position: sticky; /* Optional: Make header sticky */
+        top: 0; /* Set the sticky position */
+        z-index: 10; /* Ensure header stays above other content */
+    }
+
+    .add-container {
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-between; /* Space between items */
+        align-items: center; /* Center items vertically */
+        margin: 20px 0; /* Optional: Add margin for spacing */
+    }
+    
+    #searchBar {
+        flex: 1; /* Allow the search bar to take available space */
+        max-width: 300px; /* Set a maximum width */
+        margin-right: 10px; /* Optional: Space between button and search bar */
+        padding: 8px; /* Add padding for better input area */
+        box-sizing: border-box; /* Include padding in width calculation */
+    }
+}

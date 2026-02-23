@@ -1,0 +1,524 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kristen ITC', monospace;
+}
+
+body {
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 80px; 
+}
+
+.container {
+    display: flex;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 20px;
+}
+
+.login-section {
+    flex: 1;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.brand-section {
+    flex: 1;
+    background-color: #29AB87;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 200px;
+    border: 8px solid #000000;
+}
+
+h2 {
+    color: black;
+    font-size: 4vw;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.brand-section h2 {
+    color: white;
+    font-size: 3vw;
+}
+
+p {
+    color: white;
+    font-size: 1.5vw;
+    text-align: center;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px 40px;
+    border-radius: 40px;
+    border: 2px solid #000000;
+    font-size: 16px;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+#contact-error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    padding-top: 5px;
+    display: none; 
+    width: 100%; 
+}
+#password-error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 100%; 
+    bottom: 10%;
+    left: 0; 
+    padding-top: 5px;
+    display: none; 
+    width: 100%; 
+}
+#password-specialchar-error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 100%; 
+    bottom: 10%;
+    left: 0; 
+    padding-top: 5px;
+    display: none; 
+    width: 100%; 
+}
+#confirm-password-error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    padding-top: 5px;
+    display: none; 
+    width: 100%; 
+}
+button.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #29AB87;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    border: 2px solid #000000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.login-btn:hover {
+    background-color: #29AB87;
+}
+
+.brand-section .signup-btn {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #fff;
+    color: black;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.brand-section .signup-btn:hover {
+    background-color: #29AB87;
+}
+.brand-section {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.brand-content {
+    transition: all 0.5s ease;
+}
+
+button.signup-btn {
+    background-color: #29AB87;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.signup-btn:hover {
+    background-color: #29AB87;
+}
+
+.register-section {
+    flex: 1; /* Make it take equal space like login section */
+    padding: 40px;
+    background-color: #fff; /* Same background as login section */
+    display: none; /* Initially hidden */
+}
+
+.register-form h2 {
+    color: black;
+    font-size: 70px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register-form .input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.register-form .input-container input {
+    width: 100%;
+    padding: 10px 40px;
+    border-radius: 40px;
+    border: 2px solid #000000;
+    font-size: 16px;
+}
+
+.register-form .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+button.register-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #29AB87;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    border: 2px solid #000000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.register-btn:hover {
+    background-color: #29AB87;
+}
+
+#registration-brand-section {
+    display: none;
+}
+.registeration-section {
+    flex: 1;
+    background-color: #29AB87;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.registeration-section h2 {
+    color: white;
+    font-size: 3vw;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.registeration-section p {
+    color: white;
+    font-size: 1.5vw;
+}
+/* Media Queries for different screen sizes */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .container {
+        flex-direction: column; /* Stack sections vertically */
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .brand-section, .login-section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 8vw; /* Scale text for smaller screens */
+    }
+
+    .input-container input {
+        font-size: 14px; /* Slightly smaller font for inputs */
+    }
+
+    .registeration-section h2{
+         font-size: 6vw;
+    }
+    .registeration-section p{
+        font-size: 6vw;
+   }
+
+    .brand-section h2 {
+        font-size: 6vw;
+    }
+
+    p {
+        font-size: 3vw; /* Responsive text size */
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 10vw;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .input-container input {
+        font-size: 12px; /* Even smaller font size for small screens */
+    }
+
+    .brand-section h2 {
+        font-size: 8vw;
+    }
+
+    p {
+        font-size: 4vw;
+    }
+
+    button.login-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .registeration-section h2{
+        font-size: 6vw;
+   }
+   .registeration-section p{
+       font-size: 6vw;
+  }
+
+
+.otp-section {
+    flex: 1; /* Make it take equal space like login section */
+    padding: 40px;
+    background-color: #fff; /* Same background as login section */
+    display: none; /* Initially hidden */
+}
+
+.otp-form h3 {
+    color: black;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.otp-form .input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.otp-form .input-container input {
+    width: 100%;
+    padding: 10px 40px;
+    border-radius: 40px;
+    border: 2px solid #000000;
+    font-size: 16px;
+}
+
+.otp-form .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+button.verify-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #29AB87;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    border: 2px solid #000000;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.resend-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #29AB87;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    border: 2px solid #000000;
+    font-size: 12px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button.verify-btn:hover {
+    background-color: #29AB87;
+}
+
+/* Specific styles for the Success Modal */
+#success-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Background overlay */
+}
+
+#success-modal .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#success-modal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#success-modal .close:hover,
+#success-modal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#success-modal h2 {
+    color: #28a745; /* Success green color */
+    margin-bottom: 20px;
+}
+
+#success-modal p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#success-modal #close-modal-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#success-modal #close-modal-btn:hover {
+    background-color: #218838;
+}
+
+
+#error-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Background overlay */
+}
+
+#error-modal .error-modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#error-modal h2 {
+    color: red; /* Success green color */
+    margin-bottom: 20px;
+}
+
+#error-modal p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#error-modal #close-error-modal-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#error-modal #close-error-modal-btn:hover {
+    background-color: #218838;
+}
+
+
+}

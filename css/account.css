@@ -1,0 +1,640 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.account-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.account-sidebar {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.account-sidebar img {
+    width: 100%;
+    border-radius: 50%;
+    max-width: 150px;
+}
+
+.account-content {
+    flex: 2;
+    min-width: 300px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+#pagination-controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .account-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    #pagination-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .account-sidebar h2 {
+        font-size: 18px;
+    }
+
+    .account-content h1 {
+        font-size: 20px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    #update-profile-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+.update-profile-btn {
+    margin-top: 20px;
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.update-profile-btn:hover {
+    background-color: #e65c00;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Order History container */
+#order-history {
+    margin-top: 20px;
+}
+
+/* Table wrapper to allow horizontal scrolling */
+#order-history .table-wrapper {
+    overflow-x: auto;  /* Make only the table scrollable */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Table styling */
+#order-history table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 100px;  /* Prevent the table from shrinking too much */
+}
+
+#order-history th, #order-history td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+#order-history th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+#order-history tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Add a hover effect for rows */
+#order-history tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Styling for the pagination controls */
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#pagination-controls button {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+#pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#pagination-controls button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+#pagination-controls span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive table styles */
+@media (max-width: 768px) {
+    #order-history table {
+        min-width: 10px;
+    }
+
+    #order-history th, #order-history td {
+        font-size: 12px; /* Smaller text for mobile */
+        padding: 8px;    /* Less padding for mobile */
+    }
+
+    #pagination-controls {
+        font-size: 14px;
+    }
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensure padding and borders are included in width/height calculations */
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #999;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px; /* Increased margin to prevent overlap */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Prevent input padding from affecting overall width */
+}
+
+.update-profile-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box; /* Ensures button fits container */
+}
+
+.update-profile-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Image preview styles */
+.image-preview {
+    margin-top: 10px;
+}
+
+#preview-img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+/* CSS for Rating Modal */
+#rating-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#rating-modal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 50px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#rating-modal h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+#rating-modal label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#rating-modal input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #007bff; /* Style for checkbox color */
+}
+
+#rating-modal button {
+    margin: 5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#rating-modal button[type="button"]:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+#rating-modal button[type="button"]:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Hover effects for buttons */
+#rating-modal button[type="button"]:first-child:hover {
+    background-color: #0056b3;
+}
+
+#rating-modal button[type="button"]:last-child:hover {
+    background-color: #d32f2f;
+}
+
+/* Re-order Modal Styles */
+#reorder-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures it's above other elements */
+}
+
+#reorder-modal .custom-modal-content {
+    background: #fff; /* White background for the modal */
+    width: 400px; /* Modal width */
+    padding: 20px; /* Padding inside the modal */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the modal */
+    animation: fadeIn 0.3s ease-out; /* Smooth fade-in animation */
+}
+
+/* Header Styles */
+#reorder-modal .custom-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px; /* Space below the header */
+}
+
+#reorder-modal .custom-modal-header h5 {
+    margin: 0; /* Remove default margin */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#reorder-modal .custom-modal-header .close-button {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.2s;
+}
+
+#reorder-modal .custom-modal-header .close-button:hover {
+    color: red; /* Highlight close button on hover */
+}
+
+/* Body Styles */
+#reorder-modal .custom-modal-body {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Footer Styles */
+#reorder-modal .custom-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#reorder-modal .custom-modal-footer .btn-secondary,
+#reorder-modal .custom-modal-footer .btn-primary {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#reorder-modal .custom-modal-footer .btn-secondary {
+    background-color: #ccc; /* Light gray button */
+    color: #000; /* Black text */
+}
+
+#reorder-modal .custom-modal-footer .btn-secondary:hover {
+    background-color: #bbb; /* Darker gray on hover */
+}
+
+#reorder-modal .custom-modal-footer .btn-primary {
+    background-color: #007bff; /* Blue button */
+    color: white; /* White text */
+}
+
+#reorder-modal .custom-modal-footer .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 20% auto;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group input[type="file"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .update-profile-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .close {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 90%;
+        margin: 30% auto;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group input[type="file"] {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .update-profile-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .close {
+        font-size: 18px;
+    }
+}
+/* Vanilla Notification Styles */
+.vanilla-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 40px;
+    background-color: #28a745;
+    color: white;
+    font-size: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    z-index: 1000;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: 90%; /* Ensures the notification doesn't exceed screen width */
+    text-align: center; /* Ensures the text is centered */
+}
+
+/* Show state */
+.vanilla-notification.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vanilla-notification {
+        font-size: 18px; /* Slightly smaller font size on tablets */
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vanilla-notification {
+        font-size: 16px; /* Even smaller font size on mobile */
+        padding: 10px 20px;
+    }
+}
+/* General styles for tables */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+  }
+
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    th, td {
+      padding: 6px 10px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    table {
+      font-size: 0.9em;
+    }
+
+    .table-wrapper {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    table {
+      overflow-x: auto;
+      display: block;
+    }
+
+    /* For smaller screens, show tables in a scrollable view */
+    .table-wrapper {
+      width: 100%;
+    }
+
+    th, td {
+      white-space: nowrap;
+    }
+
+    td {
+      word-break: break-word;
+    }
+
+  }
+
+
